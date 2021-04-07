@@ -59,14 +59,36 @@
           <div class="pagination justify-content-center">
             <nav aria-label="Page navigation">
               <ul class="page-numbers justify-content-center">
-                <li><span aria-current="page" class="page-numbers current">1</span></li>
-                <li><a class="page-numbers" href="#">2</a></li>
-                <li><a class="next page-numbers" href="#"><span aria-hidden="true">Next page</span></a></li>
+                {% if is_paginated %}
+                  {% if page_obj.has_previous %}
+                  <li><a class="next page-numbers" href="?page=1"><span aria-hidden="true">First</span></a></li>
+                  <li><a class="next page-numbers" href="?page={{ page_obj.previous_page_number }}"><span aria-hidden="true">Previous</span></a></li>
+
+                  {% endif %}
+
+                  {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+
+                      <li><span aria-current="page" class="page-numbers current" href="?page={{ num }}">{{ num }}</span></li>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+
+                      <li><a class="page-numbers" href="?page={{ num }}">{{ num }}</a></li>
+                    {% endif %}
+                  {% endfor %}
+
+                  {% if page_obj.has_next %}
+
+                    <li><a class="next page-numbers" href="?page={{ page_obj.next_page_number }}"><span aria-hidden="true">Next </span></a></li>
+                    <li><a class="next page-numbers" href="?page={{ page_obj.paginator.num_pages }}"><span aria-hidden="true">Last</span></a></li>
+                  {% endif %}
+                {% endif %}
+
               </ul>
             </nav>
           </div>
         </div>
       </div>
+
     </div>
   </section>
 </div>
