@@ -31,7 +31,7 @@
                       <img src="{{ UserModel.profile_picture.url }}" class="img-fluid center-block" alt="#0">
 
                       <div class="iq-team-info text-center">
-                        <h5><a href="{% url 'instructor' UserModel.user_id %}">{{UserModel.user.username}} </a></h5>
+                        <h5><a href="{% url 'instructor' UserModel.pk %}">{{UserModel.user.username}} </a></h5>
                         <span class="team-post iq-tw-5">Web Designer</span>
                       </div>
                       <div class="share">

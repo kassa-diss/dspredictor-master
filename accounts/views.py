@@ -122,8 +122,8 @@ class PatientUpdateView(SuccessMessageMixin, UpdateView):
 
 
 class PatientProfileView(View):
-    def get(self, request, user_id):
-        UserProfileObj = get_object_or_404(Patient, user_id=user_id)
+    def get(self, request, pk):
+        UserProfileObj = get_object_or_404(Patient, pk=pk)
 
         context = {
             'UserProfile'  : UserProfileObj,
@@ -131,8 +131,8 @@ class PatientProfileView(View):
         return render(request, 'accounts/patient_profile.html', context)
 
 class InstructorProfileView(View):
-    def get(self, request, user_id):
-        UserProfileObj = get_object_or_404(Instructor, user_id=user_id)
+    def get(self, request, pk):
+        UserProfileObj = get_object_or_404(Instructor, pk=pk)
 
         context = {
             'UserProfile'  : UserProfileObj,
