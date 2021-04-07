@@ -167,3 +167,26 @@ def Instructors(request):
     }
 
     return render(request, 'accounts/instructors.html', context)
+
+class InstructorUpdateView(SuccessMessageMixin, UpdateView):
+    model = Instructor
+    form_class = InstructorForm
+    success_url = 'instructor'
+    success_message = "Yor details has been updated successfully"
+    template_name = "accounts/insedit_profile.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["savebtn"] = 'Save Changes'
+
+        return context
+
+
+def PatientMyProfile(request):
+    pro = Patient.objects.filter(user=request.user)
+    return render(request,'accounts/PatientMyProfile.html',{'pro':pro})
+
+
+def InstructorMyProfile(request):
+    pro = Instructor.objects.filter(user=request.user)
+    return render(request,'accounts/InstructorMyProfile.html',{'pro':pro})
