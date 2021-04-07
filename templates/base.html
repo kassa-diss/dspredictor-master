@@ -112,20 +112,43 @@
 												{% if user.is_authenticated %}
 												<div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto w-100 justify-content-end">
-                                <li class="nav-item ">
-                                    <a class="nav-link  active" href="#"><i class="fa fa-user-o" >&nbsp; {{ user.username }}</i> </a>
+
+																<li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<i class="fa fa-user-o" >&nbsp; {{ user.username }} {{patient.username}}</i>
+										</a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown-1">
+																		{% for patient in patients  %}
+																			{% if patient.is_instuctor == False %}
+
+
+                                        <a class="dropdown-item" href="{% url 'myprofile-patient' %}">My Profile</a>
+                                        <a class="dropdown-item" href="{% url 'index' %}">Edit Profile</a>
+
+																			{% endif %}
+																		{% endfor %}
+																		{% for instructor in instructors  %}
+																			{% if instructor.is_instuctor == True %}
+
+
+																				<a class="dropdown-item" href="{% url 'myprofile-instructor' %}">My Profile</a>
+																				<a class="dropdown-item" href="{% url 'index' %}">Edit Profile</a>
+
+																			{% endif %}
+																		{% endfor %}
+																					<a href="javascript:{document.getElementById('logout').submit()}" class="dropdown-item">
+																					Log Out
+																					</a>
+																					<form action="{% url 'logout' %}" method="POST" id="logout">
+																						{% csrf_token %}
+																						<input type="hidden">
+																					</form>
+
+                                    </div>
                                 </li>
 
 
-                                <li class="nav-item">
-																	<a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">
-																		<i class="fa fa-power-off" aria-hidden="true"></i>
-																	</a>
-																	<form action="{% url 'logout' %}" method="POST" id="logout">
-																		{% csrf_token %}
-																		<input type="hidden">
-																	</form>
-                                </li>
+
                             </ul>
                         </div>
 												{% else %}
