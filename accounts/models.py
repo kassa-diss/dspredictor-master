@@ -31,6 +31,7 @@ class Patient(models.Model):
     email = models.EmailField(max_length=254, unique=True)
     guardian = models.CharField(max_length=150,null=True)
     phone = models.CharField(max_length=12, unique=True)
+    is_instuctor = models.BooleanField(default=False)
 
 
     def __str__(self):
@@ -46,6 +47,7 @@ class Instructor(models.Model):
     email = models.EmailField(max_length=254, unique=True)
     qualification = models.CharField(max_length=200,null=True)
     phone = models.CharField(max_length=12, unique=True)
+    is_instuctor = models.BooleanField(default=True)
 
 
     def __str__(self):
