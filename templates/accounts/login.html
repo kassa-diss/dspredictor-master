@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+<!-- Page Loader -->
+{% block title %} Login {% endblock title %}
+
+{% block content %}
+
+
+<div class="main-content">
+
+<section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <iframe src="{% static 'images/healthcare/12.png' %}" width="600" height="580" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        <div class="col-lg-6">
+
+          <h4 class="mb-4">Log In</h4>
+          <form method="POST">
+               {% csrf_token %}
+            <div class="row">
+
+              <div class="col-lg-12">  <input type="text" class="form-control"  name="username" id="username" placeholder="Your Username"></div>
+              <div class="col-lg-12">  <input type="password" class="form-control"  name="password" id="password" placeholder="Your Password"></div>
+                <div class="col-lg-12"> <p>Don't have an account? <a href ="{% url 'register'  %}">register</a></p></div>
+              </div>
+              <div class="row">
+              <div class="col-lg-12">
+                <button type="submit" class="button" >Login</button>
+              </div>
+              <div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+{% endblock %}

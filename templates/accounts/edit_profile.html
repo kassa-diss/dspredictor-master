@@ -1,0 +1,68 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+<!-- Page Loader -->
+{% block title %} Edit Profile {% endblock title %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="main-content">
+
+<section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <iframe src="{% static 'images/healthcare/12.png' %}" width="600" height="1075" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        <div class="col-lg-6">
+
+          <h4 class="mb-4">User Profile</h4>
+          <form method="post" action="" enctype="multipart/form-data">
+
+
+
+               {% csrf_token %}
+
+
+                 {{ form.profile_picture|as_crispy_field }}
+
+
+
+                 {{ form.address|as_crispy_field }}
+
+                 {{ form.phone|as_crispy_field }}
+
+                 {{ form.email|as_crispy_field }}
+                 {{ form.birth_date|as_crispy_field }}
+
+
+
+
+                  {{ form.bio|as_crispy_field }}
+                  {{ form.guardian|as_crispy_field }}
+
+
+
+
+
+
+
+
+
+               <button type="submit" class="btn btn-primary button" value="save" > save </button>
+               <a href="" class="btn btn-primary button" style="background-color:grey;">Cancel</a>
+
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+{% endblock %}
