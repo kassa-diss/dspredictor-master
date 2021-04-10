@@ -75,7 +75,7 @@ def register(request):
           user.groups.add(group)
           user.save()
           messages.success(request, 'You are now registered and can log in')
-          return redirect('login')
+          return redirect('edit-profile')
     else:
       messages.error(request, 'Passwords do not match')
       return redirect('register')
