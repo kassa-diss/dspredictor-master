@@ -18,13 +18,17 @@ urlpatterns = [
     path('patient/<pk>/edit', views.PatientUpdateView.as_view(), name='edit-profiledata'),
     path('patient/<pk>', views.PatientProfileView.as_view() , name='patient'),
     path('instructor/<pk>', views.InstructorProfileView.as_view() , name='instructor'),
-    path('instructor/<pk>/edit', views.InstructorUpdateView.as_view(), name='edit-profiledata'),
+
+
 
     path('patients', views.Patients, name='Patients'),
     path('instructors', views.Instructors, name='Instructors'),
 
     path('patient-my', views.PatientMyProfile, name='myprofile-patient'),
     path('instructor-my', views.InstructorMyProfile, name='myprofile-instructor'),
+
+    path('addmyworks', views.MyWorksCreateView , name='addmyworks'),
+    path('talent', views.talent , name='talent'),
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,144 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+<!-- Page Loader -->
+{% block title %} Add my talents {% endblock title %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<!-- <div class="main-content">
+
+<section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <iframe src="{% static 'images/healthcare/12.png' %}" width="600" height="1075" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        <div class="col-lg-6">
+
+          <h3 class="mb-4">Add my talent</h3>
+          <form method="post" action="" enctype="multipart/form-data">
+
+
+
+               {% csrf_token %}
+
+
+                 {{ form.title|as_crispy_field }}
+
+
+
+                 {{ form.description|as_crispy_field }}
+
+                 {{ form.picture_1|as_crispy_field }}
+
+                 {{ form.picture_2|as_crispy_field }}
+                 {{ form.picture_3|as_crispy_field }}
+
+
+
+
+                  {{ form.video|as_crispy_field }}
+
+
+
+
+
+
+
+
+
+
+               <button type="submit" class="btn btn-primary button" value="save" > save </button>
+               <a href="" class="btn btn-primary button" style="background-color:grey;">Cancel</a>
+
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div> -->
+
+
+<section id="contact" class="contact">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div class="container" data-aos="fade-up">
+
+    <header class="section-header">
+      <h2>My Talents</h2>
+      <p>Add New Item</p>
+    </header>
+
+    <div class="row gy-4">
+
+      <div class="col-lg-6">
+
+        <img src="{% static 'assets/img/login.jpg' %}" class="img-fluid" alt="">
+
+      </div>
+
+      <div class="col-lg-6">
+
+        <h4 class="mb-4">Enter details about your talent</h4>
+        <form method="POST" action="" enctype="multipart/form-data" >
+          {% csrf_token %}
+          {% csrf_token %}
+
+
+            {{ form.title|as_crispy_field }}
+
+
+
+            {{ form.description|as_crispy_field }}
+
+            {{ form.picture_1|as_crispy_field }}
+
+            {{ form.picture_2|as_crispy_field }}
+            {{ form.picture_3|as_crispy_field }}
+
+
+
+
+             {{ form.video|as_crispy_field }}
+
+
+
+
+
+
+
+
+
+             <br>
+              <br>
+          <button type="submit" class="btn btn-primary button" value="save" > save </button>
+          <a  class="btn btn-primary button" style="background-color:grey;">Cancel</a>
+
+
+
+          </div>
+          <br>
+        </form>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section><!-- End Contact Section -->
+{% endblock %}

@@ -143,7 +143,7 @@ class InstructorProfileView(View):
 def Patients(request):
   UserProfileObj = Patient.objects.order_by('p_id')
 
-  paginator = Paginator(UserProfileObj, 6)
+  paginator = Paginator(UserProfileObj, 8)
   page = request.GET.get('page')
   paged_patients = paginator.get_page(page)
 
@@ -158,7 +158,7 @@ def Patients(request):
 def Instructors(request):
     UserProfileObj = Instructor.objects.order_by('in_id')
 
-    paginator = Paginator(UserProfileObj, 6)
+    paginator = Paginator(UserProfileObj, 8)
     page = request.GET.get('page')
     paged_instructors = paginator.get_page(page)
 
@@ -184,9 +184,30 @@ class InstructorUpdateView(SuccessMessageMixin, UpdateView):
 
 def PatientMyProfile(request):
     pro = Patient.objects.filter(user=request.user)
-    return render(request,'accounts/PatientMyProfile.html',{'pro':pro})
+    my = MyWorks.objects.filter(user=request.user)
+    return render(request,'accounts/PatientMyProfile.html',{'pro':pro,'my':my})
 
 
 def InstructorMyProfile(request):
     pro = Instructor.objects.filter(user=request.user)
     return render(request,'accounts/InstructorMyProfile.html',{'pro':pro})
+
+
+def MyWorksCreateView (request):
+    if request.method == 'GET':
+            return render(request,'accounts/add_my_works.html',{'form':MyWorksForm()})
+    else:
+        form = MyWorksForm(request.POST,request.FILES or None)
+        if form.is_valid():
+            print("valid")
+
+            new_form = form.save(commit=False)
+            new_form.user = request.user
+            new_form.save()
+
+        return redirect('myprofile-patient')
+
+
+def talent(request):
+    my = MyWorks.objects.all()
+    return render(request,'accounts/my.html',{'my':my})

@@ -9,99 +9,145 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-<!-- Main Content -->
-<div class="main-content">
-  <section>
-    <div class="container">
-      <div class="col-lg-12">
-  <div class="title-health-box wow fadeInUp text-center" data-wow-duration="0.9s">
-    <p class="sub-title">Blog</p>
-    <h2 class="title font-weight-bold">Latest Blog Posts</h2>
-  </div>
-  <form class="form-inline my-2 my-lg-0 pb-2">
-    <div class="col-lg-12" >
-      <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search" style="width: 400px">
-      <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">
-    </div>
-  </form>
-      </div>
-      <div class="row">
-        {% for post in posts %}
-        <div class="col-lg-6 col-md-6 col-sm-6 Vizion-space-bottom">
-          <div class="iq-blog-box">
-          <div class="iq-blog-image clearfix">
-            <img src="{{post.pic.url}}" class="img-fluid center-block" alt="blogimage1">
-          </div>
-          <div class="iq-blog-detail">
-            <div class="iq-blog-meta">
-              <ul class="list-inline">
-                <li class="list-inline-item">
-                  <a href="{% url 'user_posts' post.author.username %}" class="iq-user"><i class="fa fa-user" aria-hidden="true"></i> {{ post.author }}</a>
-                </li>
-                <li class="list-inline-item">
-                  <i class="fa fa-calendar-minus-o" aria-hidden="true"></i>
-                  <a href="#" rel="bookmark">{{ post.date_posted|date:"F d, Y" }}</a>
-                </li>
 
+
+<main id="main">
+
+  <!-- ======= Breadcrumbs ======= -->
+  <section class="breadcrumbs">
+    <div class="container">
+
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li>Blog</li>
+      </ol>
+      <h2>Blog</h2>
+
+    </div>
+  </section><!-- End Breadcrumbs -->
+
+  <!-- ======= Blog Section ======= -->
+  <section id="blog" class="blog">
+    <div class="container" data-aos="fade-up">
+
+      <div class="row">
+
+        <div class="col-lg-8 entries">
+          {% for post in posts %}
+          <article class="entry">
+
+            <div class="entry-img">
+              <img src="{{post.pic.url}}" alt="" class="img-fluid">
+            </div>
+
+            <h2 class="entry-title">
+              <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+            </h2>
+
+            <div class="entry-meta">
+              <ul>
+                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="{% url 'user_posts' post.author.username %}">{{ post.author }}</a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2020-01-01">{{ post.date_posted|date:"F d, Y" }}</time></a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
               </ul>
             </div>
-            <div class="blog-title">
-              <a href="{% url 'post_detail' post.pk %}">
-                <h6>{{ post.title }}</h6>
-              </a>
+
+            <div class="entry-content">
+              <p>
+                {{ post.brief | slice:":65" }}
+              </p>
+              <div class="read-more">
+                <a href="{% url 'post_detail' post.pk %}">Read More</a>
+              </div>
             </div>
-            <div class="blog-content">
-              <p>{{ post.brief | slice:":65" }}</p>
-            </div>
-            <div class="blog-button"><a class="button" href="{% url 'post_detail' post.pk %}">Read More <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-          </div>
-        </div>
-      </div>
-        </div>
-        {% endfor %}
+
+          </article><!-- End blog entry -->
+            {% endfor %}
 
 
+          <div class="blog-pagination">
+            <ul class="justify-content-center">
+              <!-- <li><a href="#">1</a></li>
+              <li class="active"><a href="#">2</a></li>
+              <li><a href="#">3</a></li> -->
+              {% if is_paginated %}
+                {% if page_obj.has_previous %}
+                <li><a class="next page-numbers" href="?page=1"><span aria-hidden="true">First</span></a></li>
+                <li><a class="next page-numbers" href="?page={{ page_obj.previous_page_number }}"><span aria-hidden="true">Previous</span></a></li>
 
-
-      </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="pagination justify-content-center">
-            <nav aria-label="Page navigation">
-              <ul class="page-numbers justify-content-center">
-                {% if is_paginated %}
-                  {% if page_obj.has_previous %}
-                  <li><a class="next page-numbers" href="?page=1"><span aria-hidden="true">First</span></a></li>
-                  <li><a class="next page-numbers" href="?page={{ page_obj.previous_page_number }}"><span aria-hidden="true">Previous</span></a></li>
-
-                  {% endif %}
-
-                  {% for num in page_obj.paginator.page_range %}
-                    {% if page_obj.number == num %}
-
-                      <li><span aria-current="page" class="page-numbers current" href="?page={{ num }}">{{ num }}</span></li>
-                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-
-                      <li><a class="page-numbers" href="?page={{ num }}">{{ num }}</a></li>
-                    {% endif %}
-                  {% endfor %}
-
-                  {% if page_obj.has_next %}
-
-                    <li><a class="next page-numbers" href="?page={{ page_obj.next_page_number }}"><span aria-hidden="true">Next </span></a></li>
-                    <li><a class="next page-numbers" href="?page={{ page_obj.paginator.num_pages }}"><span aria-hidden="true">Last</span></a></li>
-                  {% endif %}
                 {% endif %}
 
-              </ul>
-            </nav>
+                {% for num in page_obj.paginator.page_range %}
+                  {% if page_obj.number == num %}
+
+                    <li><a class="page-numbers" href="?page={{ num }}">{{ num }}</a></li>
+                  {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+
+                    <li><a class="page-numbers" href="?page={{ num }}">{{ num }}</a></li>
+                  {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+
+                  <li><a class="next page-numbers" href="?page={{ page_obj.next_page_number }}"><span aria-hidden="true">Next </span></a></li>
+                  <li><a class="next page-numbers" href="?page={{ page_obj.paginator.num_pages }}"><span aria-hidden="true">Last</span></a></li>
+                {% endif %}
+              {% endif %}
+            </ul>
           </div>
-        </div>
+
+        </div><!-- End blog entries list -->
+
+        <div class="col-lg-4">
+
+          <div class="sidebar">
+
+            <h3 class="sidebar-title">Search</h3>
+            <div class="sidebar-item search-form">
+              <form action="">
+                <input name="q" type="search" placeholder="Search" aria-label="Search">
+                <button type="submit" value="Search"><i class="bi bi-search"></i></button>
+
+                <!-- <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search" style="width: 400px">
+                <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search"> -->
+              </form>
+            </div><!-- End sidebar search formn-->
+
+
+
+            <h3 class="sidebar-title">Featured Post</h3>
+            <div class="sidebar-item recent-posts">
+              <div class="post-item clearfix">
+                <img src="assets/img/blog/blog-recent-1.jpg" alt="">
+                <h4><a href="blog-single.html">Nihil blanditiis at in nihil autem</a></h4>
+                <time datetime="2020-01-01">Jan 1, 2020</time>
+              </div>
+
+
+
+            </div><!-- End sidebar recent posts-->
+
+            <h3 class="sidebar-title">Tags</h3>
+            <div class="sidebar-item tags">
+              <ul>
+                <li><a href="#">DownSyndrome</a></li>
+                <li><a href="#">Lifestyle</a></li>
+                <li><a href="#">Activities</a></li>
+                <li><a href="#">Education</a></li>
+
+              </ul>
+            </div><!-- End sidebar tags-->
+
+          </div><!-- End sidebar -->
+
+        </div><!-- End blog sidebar -->
+
       </div>
 
     </div>
-  </section>
-</div>
+  </section><!-- End Blog Section -->
+
+</main><!-- End #main -->
 
 
 {% endblock %}

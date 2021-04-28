@@ -1,5 +1,5 @@
 from django import forms
-from .models import Instructor,Patient
+from .models import Instructor,Patient,MyWorks
 from django.forms import formset_factory
 
 
@@ -42,4 +42,19 @@ class InstructorForm(forms.ModelForm):
                   'birth_date',
                   'profile_picture',
                   'bio',
+                  ]
+
+class MyWorksForm(forms.ModelForm):
+    
+
+
+    class Meta:
+        model = MyWorks
+        fields = [
+                          'title',
+                          'description',
+                          'picture_1',
+                          'picture_2',
+                          'picture_3',
+                          'video',
                   ]

@@ -1,361 +1,175 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from iqonic.design/themes/vizion/ai-healthcare/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 04 Apr 2021 02:44:18 GMT -->
 <head>
-		<!-- Required meta tags -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title> DS PREDICTOR | {% block title %}Title Missing{% endblock title %} </title>		<!-- Favicon -->
-		<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-		<!-- REVOLUTION STYLE SHEETS -->
-		<link rel="stylesheet"  href="{% static 'revslider/css/rs6.css' %}">
-		<!-- Typography CSS -->
-		<link rel="stylesheet" href="{% static 'css/typography.css' %}">
-		<!-- Style -->
-		<link rel="stylesheet" href="{% static 'css/vizion-style.css' %}">
-		<!-- Responsive -->
-		<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-		<style>
-		.img-fluid-new {
-    max-width: 100%;
+  <title> DS PREDICTOR | {% block title %}Title Missing{% endblock title %} </title>
+  <meta content="" name="description">
 
+  <meta content="" name="keywords">
 
-		    height: 50vw;
-		    object-fit: cover;}
-		</style>
-	</head>
-	<body>
-		<!-- loading -->
-		<div id="loader">
-			<div id="loading-center">
-				<div class="loader">
-					<div class="spinner"></div>
-					<img class="loading-img" src="{% static 'images/loader-img.png' %}" alt="loder">
-				</div>
-			</div>
-		</div>
-		<!-- loading End -->
-		<!--================================= -->
-		<!-- Header -->
-		<header id="main-header" class="header-main">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="{% url 'index' %}">
-                            <img class="img-fluid" src="{% static 'images/black.png' %}" alt="img">
-                        </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="menu-btn d-inline-block" id="menu-btn">
-								<span class="line"></span>
-                            <span class="line"></span>
-                            <span class="line"></span>
-                            </span>
-                            <span class="ion-navicon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav mr-auto w-100 justify-content-end">
-                                <li class="nav-item ">
-                                    <a class="nav-link  " href="{% url 'index' %}">Home</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link " href="#" id="navbarDropdown" role="button" >
-											Predictor
-										</a>
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.ico' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
-                                </li>
-																{% if user.is_authenticated %}
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											Connect
-										</a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown-1">
-                                        <a class="dropdown-item" href="portfolio-2-column.html">To a patient</a>
-                                        <a class="dropdown-item" href="portfolio-3-column.html">To a teacher</a>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-                                    </div>
-                                </li>
-																{%  endif  %}
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											Blog
-										</a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown-2">
-																			{% if request.user.is_staff %}
-                                        <a class="dropdown-item" href="blog.html"> New Blog Post</a>
-																				{% endif %}
-                                        <a class="dropdown-item" href="{% url 'blog' %}">Blog</a>
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: FlexStart - v1.2.0
+  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="{% url 'index' %}" class="logo d-flex align-items-center">
+        <img src="{% static 'assets/img/logo_new.png' %}" alt="">
+        <span>DS Predictor</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto " href="{% url 'index' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="#">Predictor</a></li>
+          <li class="dropdown"><a href="#"><span>Community</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{% url 'Patients' %}">Users</a></li>
+              <li><a href="{% url 'Instructors' %}">Professionals</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="{% url 'talent' %}">Talents</a></li>
+
+          <li class="dropdown"><a href="#"><span>Blog</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              {% if request.user.is_staff %}
+              <li><a href="{% url 'blog' %}">New Blog</a></li>
+              {% endif %}
+              <li><a href="{% url 'blog' %}">Blog</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#services">Help</a></li>
+          {% if user.is_authenticated %}
+          <li class="dropdown"><a href="#"><span>{{ user.username }} {{patient.username}}</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+
+              {% for patient in patients  %}
+                {% if patient.is_instuctor == False %}
 
 
-                                    </div>
-                                </li>
-																<li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											Community
-										</a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown-1">
-                                        <a class="dropdown-item" href="{% url 'Patients' %}">Users</a>
-                                        <a class="dropdown-item" href="{% url 'Instructors' %}">Professionals</a>
+                  <li><a href="{% url 'myprofile-patient' %}">My Profile</a></li>
+                  <li><a href="{% url 'edit-profiledata' patient.pk %}">Edit Profile</a></li>
 
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="contact-us.html">Help</a>
-                                </li>
-                            </ul>
-                        </div>
-												{% if user.is_authenticated %}
-												<div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav mr-auto w-100 justify-content-end">
-
-																<li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											<i class="fa fa-user-o" >&nbsp; {{ user.username }} {{patient.username}}</i>
-										</a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown-1">
-																		{% for patient in patients  %}
-																			{% if patient.is_instuctor == False %}
+                {% endif %}
+              {% endfor %}
+              {% for instructor in instructors  %}
+                {% if instructor.is_instuctor == True %}
 
 
-                                        <a class="dropdown-item" href="{% url 'myprofile-patient' %}">My Profile</a>
-                                        <a class="dropdown-item" href="{% url 'index' %}">Edit Profile</a>
-
-																			{% endif %}
-																		{% endfor %}
-																		{% for instructor in instructors  %}
-																			{% if instructor.is_instuctor == True %}
+                  <li><a href="{% url 'myprofile-instructor' %}">My Profile</a></li>
 
 
-																				<a class="dropdown-item" href="{% url 'myprofile-instructor' %}">My Profile</a>
-																				<a class="dropdown-item" href="{% url 'index' %}">Edit Profile</a>
+                {% endif %}
+              {% endfor %}
+              <li><a href="javascript:{document.getElementById('logout').submit()}" >
+              Log Out
+              </a></li>
+              <form action="{% url 'logout' %}" method="POST" id="logout">
+                {% csrf_token %}
+                <input type="hidden">
+              </form>
+            </ul>
+          </li>
+          {% else %}
+          <li><a class="getstarted scrollto" href="{% url 'login' %}">Login</a></li>
 
-																			{% endif %}
-																		{% endfor %}
-																					<a href="javascript:{document.getElementById('logout').submit()}" class="dropdown-item">
-																					Log Out
-																					</a>
-																					<form action="{% url 'logout' %}" method="POST" id="logout">
-																						{% csrf_token %}
-																						<input type="hidden">
-																					</form>
+        {% endif %}
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
 
-                                    </div>
-                                </li>
+    </div>
+  </header><!-- End Header -->
+
+
+    {% block content %} {% endblock %}
+
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
 
 
 
-                            </ul>
-                        </div>
-												{% else %}
-												<div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav mr-auto w-100 justify-content-end">
-                                <li class="nav-item ">
-																	<a class="nav-link" href="{% url 'register' %}">
-																		 Register</a>
-                                </li>
+      <div class="footer-top" align = "center">
+        <div class="container ">
 
+          <div class="col-lg-12 col-md-12 footer-info" align = "center">
 
-                                <li class="nav-item">
-																	<a class="nav-link" href="{% url 'login' %}">
-																		<i class="fas fa-sign-in-alt"></i>
-
-																		Login</a>
-                                </li>
-                            </ul>
-                        </div>
-
-												{% endif %}
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-		<!-- Header End -->
-		<!-- START Slider 5 1 REVOLUTION SLIDER 6.2.2 --><p class="rs-p-wp-fix"></p>
-
-
-
-      {% block content %} {% endblock %}
-
-
-
-
-      <footer  class="position-relative purple-bg" id="iq-contact">
-  			<div class="container">
-  				<div class="footer-top">
-  					<div class="row">
-  						<div class="col-lg-4 col-md-6 col-sm-6  iq-rmb-50">
-  							<div class="footer-logo">
-  								<a href="{% url 'index' %}"><img class="img-fluid mb-3" src="{% static 'images/footer_new.png' %}" alt="img"></a>
-  								<div class="mt-2 text-white"> A machine learning based down syndrome predictictor with an online community for dowm syndrome patients. </div>
-  							</div>
-  						</div>
-  						<div class="col-lg-3 col-md-6 col-sm-6 mt-4 mt-lg-0 mt-md-0">
-
-  						</div>
-  						<div class="col-lg-3 col-md-6 col-sm-6 mt-lg-0 mt-4">
-  							<h5 class="mb-4 font-weight-bold text-white">Menu</h5>
-  							<ul class="menu p-0">
-									<li><a class="text-white" href="{% url 'index' %}">Home</a></li>
-  								<li><a class="text-white" href="javascript:void(0)">Predictor</a></li>
-  								<li><a class="text-white" href="javascript:void(0)">Connect</a></li>
-  								<li><a class="text-white" href="{% url 'index' %}">Blog</a></li>
-									<li><a class="text-white" href="javascript:void(0)">My Profile</a></li>
-
-  							</ul>
-  						</div>
-  						<div class="col-lg-2 col-md-6 col-sm-6 mt-lg-0 mt-4">
-  							<h5 class="mb-4 font-weight-bold text-white">About</h5>
-  							<ul class="menu p-0">
-
-  								<li><a class="text-white" href="javascript:void(0)">About Us</a></li>
-									<li><a class="text-white" href="javascript:void(0)">help</a></li>
-  							</ul>
-              </div>
-            </div>
-            <hr class="pt-5">
-            <div class="pt-3 pb-3">
-              <div class="row justify-content-between text-center">
-                <div class="col-auto mr-auto"> 				<span class="copyright text-white">Copyright 2021 | DS PREDICTOR All Rights Reserved.</span>
-                </div>
-                <div class="col-auto">
-                  <div class="social-icone">
-                    <ul>
-                      <li class="d-inline"><a class="text-white" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                      <li class="d-inline"><a class="text-white" href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                      <li class="d-inline"><a class="text-white" href="https://plus.google.com/"><i class="fa fa-google-plus"></i></a></li>
-                      <li class="d-inline"><a class="text-white" href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+            <div class="col-lg-12 text-center">
+              <h2><a href="#">DS Predictor</a></h2>
+              <p></p>
             </div>
           </div>
+
+            <div class="col-lg-12 col-md-12 footer-info" align = "center">
+
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bi bi-instagram bx bxl-instagram"></i></a>
+                <a href="#" class="linkedin"><i class="bi bi-linkedin bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+
+
+
+
         </div>
-        <!-- back-to-top -->
-        <div id="back-to-top" style="">
-          <a class="top" id="top" href="#top"> <i class="ion-ios-upload-outline"></i> </a>
+      </div>
+
+      <div class="container">
+        <div class="copyright">
+          &copy; Copyright <strong><span>DS Predictor</span></strong>. All Rights Reserved
         </div>
-        <!-- back-to-top End -->
-      </footer>
-      <!-- Footer End -->
-      <!-- Optional JavaScript -->
-      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="{% static 'js/jquery-3.4.1.js' %}"></script>
-      <!-- popper  -->
-      <script src="{% static 'js/popper.min.js' %}"></script>
-      <!--  bootstrap -->
-      <script src="{% static 'js/bootstrap.min.js' %}" ></script>
-      <!-- Appear JavaScript -->
-      <script src="{% static 'js/appear.js' %}"></script>
-      <!-- Circle Progress -->
-      <script src="{% static 'js/circle-progress.min.js' %}"></script>
-      <!-- isotope -->
-      <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
-      <!-- Countdown -->
-      <script src="{% static 'js/jquery.countdown.min.js' %}"></script>
-      <!-- countTo JavaScript -->
-      <script src="{% static 'js/jquery.countTo.js' %}"></script>
-      <!-- Magnific Popup JavaScript -->
-      <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
-      <!-- Owl Carousel JavaScript -->
-      <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-      <!-- Custom -->
-      <script src="{% static 'js/vizion-custom.js' %}"></script>
-      <!-- skrollr -->
-      <script src="{% static 'js/skrollr.js' %}"></script>
-      <!-- Wow -->
-      <script src="{% static 'js/wow.min.js' %}"></script>
+        <div class="credits">
 
+          Designed by <a >Roshan</a>
+        </div>
+      </div>
+    </footer><!-- End Footer -->
 
-      <!-- REVOLUTION JS FILES -->
-      <script src="{% static 'js/rev-jquery.js' %}"></script>
-      <script src="{% static 'revslider/js/revolution.tools.min.js' %}"></script>
-      <script src="{% static 'revslider/js/rs6.min.js' %}"></script>
-  	<script type="text/javascript">function setREVStartSize(e){
-  			try {
-  				var pw = document.getElementById(e.c).parentNode.offsetWidth,
-  					newh;
-  				pw = pw===0 || isNaN(pw) ? window.innerWidth : pw;
-  				e.tabw = e.tabw===undefined ? 0 : parseInt(e.tabw);
-  				e.thumbw = e.thumbw===undefined ? 0 : parseInt(e.thumbw);
-  				e.tabh = e.tabh===undefined ? 0 : parseInt(e.tabh);
-  				e.thumbh = e.thumbh===undefined ? 0 : parseInt(e.thumbh);
-  				e.tabhide = e.tabhide===undefined ? 0 : parseInt(e.tabhide);
-  				e.thumbhide = e.thumbhide===undefined ? 0 : parseInt(e.thumbhide);
-  				e.mh = e.mh===undefined || e.mh=="" || e.mh==="auto" ? 0 : parseInt(e.mh,0);
-  				if(e.layout==="fullscreen" || e.l==="fullscreen")
-  					newh = Math.max(e.mh,window.innerHeight);
-  				else{
-  					e.gw = Array.isArray(e.gw) ? e.gw : [e.gw];
-  					for (var i in e.rl) if (e.gw[i]===undefined || e.gw[i]===0) e.gw[i] = e.gw[i-1];
-  					e.gh = e.el===undefined || e.el==="" || (Array.isArray(e.el) && e.el.length==0)? e.gh : e.el;
-  					e.gh = Array.isArray(e.gh) ? e.gh : [e.gh];
-  					for (var i in e.rl) if (e.gh[i]===undefined || e.gh[i]===0) e.gh[i] = e.gh[i-1];
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  					var nl = new Array(e.rl.length),
-  						ix = 0,
-  						sl;
-  					e.tabw = e.tabhide>=pw ? 0 : e.tabw;
-  					e.thumbw = e.thumbhide>=pw ? 0 : e.thumbw;
-  					e.tabh = e.tabhide>=pw ? 0 : e.tabh;
-  					e.thumbh = e.thumbhide>=pw ? 0 : e.thumbh;
-  					for (var i in e.rl) nl[i] = e.rl[i]<window.innerWidth ? 0 : e.rl[i];
-  					sl = nl[0];
-  					for (var i in nl) if (sl>nl[i] && nl[i]>0) { sl = nl[i]; ix=i;}
-  					var m = pw>(e.gw[ix]+e.tabw+e.thumbw) ? 1 : (pw-(e.tabw+e.thumbw)) / (e.gw[ix]);
+    <!-- Vendor JS Files -->
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+    <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/purecounter/purecounter.js' %}"></script>
+    <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
 
-  					newh =  (e.type==="carousel" && e.justify==="true" ? e.gh[ix] : (e.gh[ix] * m)) + (e.tabh + e.thumbh);
-  				}
+    <!-- Template Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
 
-  				if(window.rs_init_css===undefined) window.rs_init_css = document.head.appendChild(document.createElement("style"));
-  				document.getElementById(e.c).height = newh;
-  				window.rs_init_css.innerHTML += "#"+e.c+"_wrapper { height: "+newh+"px }";
-  			} catch(e){
-  				console.log("Failure at Presize of Slider:" + e)
-  			}
-  		  };</script>
-  	<script type="text/javascript">
-
-  					var	revapi1,
-  						tpj;
-  					jQuery(function() {
-  						tpj = jQuery;
-  						if(tpj("#rev_slider_1_1").revolution == undefined){
-  							revslider_showDoubleJqueryError("#rev_slider_1_1");
-  						}else{
-  							revapi1 = tpj("#rev_slider_1_1").show().revolution({
-  								jsFileLocation:"js/",
-  								sliderLayout:"fullwidth",
-  								visibilityLevels:"1240,1024,778,480",
-  								gridwidth:1240,
-  								gridheight:900,
-  								editorheight:"900,768,960,720",
-  								responsiveLevels:"1240,1024,778,480",
-  								disableProgressBar:"on",
-  								navigation: {
-  									onHoverStop:false
-  								},
-  								parallax: {
-  									levels:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,30],
-  									type:"mouse",
-  									origo:"slidercenter",
-  									speed:0
-  								},
-  								sbtimeline: {
-  									set:true
-  								},
-  								fallbacks: {
-  									allowHTML5AutoPlayOnAndroid:true
-  								},
-  							});
-  						}
-
-  					});
-  				</script>
   </body>

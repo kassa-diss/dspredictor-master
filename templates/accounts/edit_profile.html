@@ -10,59 +10,89 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-<div class="main-content">
-
-<section>
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6">
-          <iframe src="{% static 'images/healthcare/12.png' %}" width="600" height="1075" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
-        <div class="col-lg-6">
-
-          <h3 class="mb-4">Create User Profile</h3>
-          <form method="post" action="" enctype="multipart/form-data">
 
 
+<section id="contact" class="contact">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 
-               {% csrf_token %}
+  <div class="container" data-aos="fade-up">
 
+    <header class="section-header">
+      <h2>Welcome </h2>
+      <p>Create User Profile</p>
+    </header>
 
-                 {{ form.profile_picture|as_crispy_field }}
+    <div class="row gy-4">
 
+      <div class="col-lg-6">
 
+        <img src="{% static 'assets/img/login.jpg' %}" class="img-fluid" alt="">
 
-                 {{ form.address|as_crispy_field }}
-
-                 {{ form.phone|as_crispy_field }}
-
-                 {{ form.email|as_crispy_field }}
-                 {{ form.birth_date|as_crispy_field }}
-
-
-
-
-                  {{ form.bio|as_crispy_field }}
-                  {{ form.guardian|as_crispy_field }}
-
-
-
-
-
-
-
-
-
-               <button type="submit" class="btn btn-primary button" value="save" > save </button>
-               <a href="" class="btn btn-primary button" style="background-color:grey;">Cancel</a>
-
-
-
-          </form>
-        </div>
       </div>
-    </div>
-  </section>
 
-</div>
+      <div class="col-lg-6">
+
+        <form method="POST" enctype="multipart/form-data" >
+          {% csrf_token %}
+          <div class="row gy-4">
+            <h4>Enter Your Details</h4>
+
+                           {% csrf_token %}
+
+
+                             {{ form.profile_picture|as_crispy_field }}
+
+
+
+                             {{ form.address|as_crispy_field }}
+
+                             {{ form.phone|as_crispy_field }}
+
+                             {{ form.email|as_crispy_field }}
+                             {{ form.birth_date|as_crispy_field }}
+
+
+
+
+                              {{ form.bio|as_crispy_field }}
+                              {{ form.guardian|as_crispy_field }}
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="col-md-12 ">
+              <button type="submit" class="btn btn-primary button" value="save" > save </button>
+              <a href="" class="btn btn-primary button" style="background-color:grey;">Cancel</a>
+
+            </div>
+
+
+          </div>
+        </form>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section><!-- End Contact Section -->
+
+
+
+
 {% endblock %}
