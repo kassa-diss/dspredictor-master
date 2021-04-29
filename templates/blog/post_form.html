@@ -10,35 +10,54 @@
 
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="main-content">
-  <section class="pb-0">
-    <div class="container">
-      <div class="title-health-box wow fadeInUp text-center" data-wow-duration="0.9s">
-        <p class="sub-title">New Blog Post</p>
-        <h2 class="title font-weight-bold">Type your content here</h2>
+
+
+
+
+<section id="contact" class="contact">
+  <br>
+
+  <br>
+  <br>
+  <br>
+
+  <div class="container" data-aos="fade-up">
+
+    <header class="section-header">
+      <h2>Blog</h2>
+      <p>New Blog Post</p>
+    </header>
+
+    <div class="row gy-4">
+
+      <div class="col-lg-6">
+
+        <img src="{% static 'assets/img/login.jpg' %}" class="img-fluid" alt="">
+
       </div>
-      <div class="row">
-        <div class="col-lg-12">
-      <form method="POST" enctype="multipart/form-data">
 
-          {% csrf_token %}
-          <fieldset class="form-group" >
+      <div class="col-lg-6">
 
-              {{ form|crispy }}
-          </fieldset>
+        <form method="POST" enctype="multipart/form-data">
 
-            <button type="submit" class="button" >Post</button>
+            {% csrf_token %}
+            <fieldset class="form-group" >
 
-      </form>
+                {{ form|crispy }}
+            </fieldset>
+            <br>
+
+              <button type="submit" class="btn btn-primary" >Post</button>
+              <a href="{% url 'blog' %}" class="btn btn-warning button" >Cancel</a>
+
+        </form>
+
+
+      </div>
+
+    </div>
+
   </div>
-  </div>
-  </div>
-</section>
-</div>
 
-<br>
-<br>
-
-<!-- Medium Editor -->
-<script>var editor = new MediumEditor('.editable');</script>
+</section><!-- End Contact Section -->
 {% endblock content %}

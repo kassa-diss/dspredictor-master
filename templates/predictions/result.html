@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+<!-- Page Loader -->
+{% block title %} Predict {% endblock title %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<section class="breadcrumbs">
+  <div class="container">
+
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blog.html">Predictor</a></li>
+      <li>Results</li>
+    </ol>
+    <h2>{{name}}'s Predictions</h2>
+
+  </div>
+</section><!-- End Breadcrumbs -->
+<!-- ======= Features Section ======= -->
+<section id="features" class="features">
+
+  <div class="container" data-aos="fade-up">
+
+    <header class="section-header">
+      <h2>Results</h2>
+      {% if risk == "Low" %}
+      <p style="color:green">Your child is at {{risk}} risk of Down Syndrome </p>
+      {% endif %}
+      {% if risk == "Intermediate" %}
+      <p style="color:orange">Your child is at {{risk}} risk of Down Syndrome </p>
+      {% endif %}
+      {% if risk == "High" %}
+      <p style="color:red">Your child is at {{risk}} risk of Down Syndrome </p>
+      {% endif %}
+    </header>
+
+    <div class="row">
+
+      <div class="col-lg-6">
+        <img src="{% static 'assets/img/results_2.jpg' %}" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-6 mt-5 mt-lg-0 d-flex">
+
+        <div class="row align-self-center gy-4">
+
+          <div class="col-md-6" data-aos="zoom-out" data-aos-delay="200">
+            <div class="feature-box d-flex align-items-center">
+              <i class="bi bi-check"></i>
+              <h3>Name: <u>{{name}}</u> </h3>
+            </div>
+          </div>
+
+          <div class="col-md-6" data-aos="zoom-out" data-aos-delay="300">
+            <div class="feature-box d-flex align-items-center">
+              <i class="bi bi-check"></i>
+              <h3>Age: <u>{{age}} years</u></h3>
+            </div>
+          </div>
+
+          <div class="col-md-6" data-aos="zoom-out" data-aos-delay="400">
+            <div class="feature-box d-flex align-items-center">
+              <i class="bi bi-check"></i>
+              <h3>Head Circumference: <u>{{head_Circumference_Inches}} inches </u></h3>
+            </div>
+          </div>
+
+          <div class="col-md-6" data-aos="zoom-out" data-aos-delay="500">
+            <div class="feature-box d-flex align-items-center">
+              <i class="bi bi-check"></i>
+              <h3>Lines across the palm: <u>{{lines_across_the_palm}}</u> </h3>
+            </div>
+          </div>
+
+          <div class="col-md-6" data-aos="zoom-out" data-aos-delay="600">
+            <div class="feature-box d-flex align-items-center">
+              <i class="bi bi-check"></i>
+              {% if protruding_tongue == 1 %}
+              <h3>Protruding tongue: <u>Yes</u></h3>
+              {% endif %}
+              {% if protruding_tongue == 0 %}
+              <h3>Protruding tongue: <u>No</u></h3>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="col-md-6" data-aos="zoom-out" data-aos-delay="700">
+            <div class="feature-box d-flex align-items-center">
+              <i class="bi bi-check"></i>
+              <h3>Height in : <u>{{height_in_Inches}} inches</u></h3>
+            </div>
+          </div>
+          <div class="col-md-6" data-aos="zoom-out" data-aos-delay="800">
+            <div class="feature-box d-flex align-items-center">
+              <i class="bi bi-check"></i>
+              <h3>sysBP : <u>{{sysBP}} mmHg </u></h3>
+            </div>
+          </div>
+          <div class="col-md-6" data-aos="zoom-out" data-aos-delay="900">
+            <div class="feature-box d-flex align-items-center">
+              <i class="bi bi-check"></i>
+              <h3>diaBP : <u>{{diaBP}} mmHg</u></h3>
+            </div>
+          </div>
+          <header class="section-header">
+            <h2>Results</h2>
+            <p>There is a {{predict_value}}% chance of diagnosing down syndrome </p>
+          </header>
+          <div class="text-center text-lg-start">
+            <a href="{% url 'predict' %}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+              <span>Go back</span>
+              <i class="bi bi-arrow-left"></i>
+            </a>
+          </div>
+
+
+        </div>
+      </div>
+
+
+    </div> <!-- / row -->
+  </div>
+</section>
+
+
+
+
+{% endblock %}

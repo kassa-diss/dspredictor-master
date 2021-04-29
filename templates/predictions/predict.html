@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!-- Page Loader -->
+{% block title %} Predict {% endblock title %}
+
+
+{% block content %}
+
+<section class="breadcrumbs">
+  <div class="container">
+
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blog.html">Predictor</a></li>
+
+    </ol>
+    <h2>Prediction Inputs</h2>
+
+  </div>
+</section><!-- End Breadcrumbs -->
+
+<section id="contact" class="contact">
+
+
+  <div class="container" data-aos="fade-up">
+
+    <header class="section-header">
+      <h2>Welcome to DC Predictor</h2>
+      <p>DS Predictions</p>
+    </header>
+
+    <div class="row gy-4">
+
+      <div class="col-lg-6">
+
+        <img src="{% static 'assets/img/predict.jpg' %}" class="img-fluid" alt="">
+
+      </div>
+
+      <div class="col-lg-6">
+
+        <form method="post" action="" enctype="multipart/form-data">
+
+          {% csrf_token %}
+
+
+          <div class="row gy-4">
+            <h4>Enter Your Details</h4>
+            <div class="row gy-4">
+            <div class="col-md-6">
+              {{ form.name|as_crispy_field }}
+            </div>
+
+            <div class="col-md-6">
+              {{ form.age|as_crispy_field }}
+            </div>
+          </div>
+          <div class="row gy-4">
+          <div class="col-md-6">
+            {{ form.head_Circumference_Inches|as_crispy_field }}
+          </div>
+
+          <div class="col-md-6">
+            {{ form.lines_across_the_palm|as_crispy_field }}
+          </div>
+        </div>
+        <div class="row gy-4">
+        <div class="col-md-6">
+          {{  form.protruding_tongue|as_crispy_field }}
+        </div>
+
+        <div class="col-md-6">
+          {{form.height_in_Inches|as_crispy_field }}
+        </div>
+      </div>
+
+        <div class="row gy-4">
+          <div class="col-md-6">
+            {{ form.sysBP|as_crispy_field }}
+          </div>
+          <div class="col-md-6">
+            {{ form.diaBP|as_crispy_field }}
+          </div>
+        </div>
+
+            <div class="col-md-12 text-center">
+
+            </div>
+
+          </div>
+
+
+          <button type="submit" class="btn btn-info button" value="save" > <i class="bi bi-code-slash"></i> 	Predict </button>
+
+
+          <br>
+          <br
+        </form>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section><!-- End Contact Section -->
+
+
+
+
+{% endblock %}
