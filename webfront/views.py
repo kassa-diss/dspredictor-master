@@ -17,3 +17,8 @@ def index(request):
 
 
     return render(request, 'webfront/index.html', context)
+
+
+def about(request):
+
+    return render(request, 'webfront/about.html')

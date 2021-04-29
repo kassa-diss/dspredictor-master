@@ -68,7 +68,7 @@
               <li><a href="{% url 'blog' %}">Blog</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#services">Help</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'about' %}">About</a></li>
           {% if user.is_authenticated %}
           <li class="dropdown"><a href="#"><span>{{ user.username }} {{patient.username}}</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -110,6 +110,17 @@
 
     </div>
   </header><!-- End Header -->
+  <!-- {% if messages %}
+      {% for message in messages %}
+  <section class="content" style="text-align:center;border-style: hidden;background-color:white;border-style: hidden;">
+
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>{{ message }}!</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+    </section>
+    {% endfor %}
+{% endif %} -->
 
 
     {% block content %} {% endblock %}

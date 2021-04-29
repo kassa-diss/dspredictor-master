@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+<!-- Page Loader -->
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+<section class="breadcrumbs">
+  <div class="container">
+
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blog.html">About</a></li>
+
+    </ol>
+    <h2>About DS Predictor</h2>
+
+  </div>
+</section><!-- End Breadcrumbs -->
+
+<main id="main">
+  <!-- ======= Blog Single Section ======= -->
+  <section id="blog" class="blog">
+    <div class="container" data-aos="fade-up">
+
+      <div class="row">
+
+        <div class="col-lg-12 entries">
+
+          <article class="entry entry-single">
+
+            <div class="entry-img">
+              <img src="{% static 'assets/img/Home_2.jpg' %}" alt="" class="img-fluid" height="150px">
+            </div>
+
+            <h2 class="entry-title">
+              <a href="blog-single.html">About DS Predictor</a>
+            </h2>
+
+            <div class="entry-meta">
+              <ul>
+
+              </ul>
+            </div>
+
+            <div class="entry-content">
+
+
+
+
+              <blockquote>
+                <p>
+                <b>  Our Vision</b><br>
+
+                  The Down Syndrome predictor envisions a world in which all people with Down syndrome have the opportunity to enhance their quality of life, realize their life aspirations and become valued members of welcoming communities.                </p>
+              </blockquote>
+
+              <p>
+                  <h2 > Services </h2> <br>
+                DS Predictor supports and advocates for the Down syndrome community by focusing on three key areas of programming: Resources & Support, Policy & Advocacy, and Community Engagement. Within these focus areas NDSS engages in various activities, events and programs. Among these are the National Advocacy & Public Policy Center; resources to support individuals with Down syndrome, their families and caregivers through the lifespan
+              </p>
+
+
+
+            </div>
+
+
+
+          </article><!-- End blog entry -->
+
+
+
+
+        </div><!-- End blog entries list -->
+
+
+
+      </div>
+
+    </div>
+  </section><!-- End Blog Single Section -->
+
+
+
+</main><!-- End #main -->
+
+
+{% endblock %}
