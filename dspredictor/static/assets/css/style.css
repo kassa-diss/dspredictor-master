@@ -189,7 +189,7 @@ section {
 .header .logo span {
   font-size: 30px;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 5px;
   color: #012970;
   font-family: "Nunito", sans-serif;
   margin-top: 3px;
@@ -199,7 +199,7 @@ section {
 # Navigation Menu
 --------------------------------------------------------------*/
 /**
-* Desktop Navigation 
+* Desktop Navigation
 */
 .navbar {
   padding: 0;
@@ -317,7 +317,7 @@ section {
 }
 
 /**
-* Mobile Navigation 
+* Mobile Navigation
 */
 .mobile-nav-toggle {
   color: #012970;
