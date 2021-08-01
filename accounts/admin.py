@@ -26,3 +26,4 @@ class MyWorksAdmin(admin.ModelAdmin):
     list_per_page = 20
 
 admin.site.register(MyWorks,MyWorksAdmin)
+admin.site.register(Event)

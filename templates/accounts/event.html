@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+Appoinments
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<section class="breadcrumbs">
+  <div class="container">
+
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blog.html">Appoinments</a></li>
+
+    </ol>
+    <h2>Appoinments Form</h2>
+
+  </div>
+</section><!-- End Breadcrumbs -->
+
+<section id="contact" class="contact">
+
+
+  <div class="container" data-aos="fade-up">
+
+    <header class="section-header">
+      <h2>Make an appoinment</h2>
+      <p>Appoinment</p>
+    </header>
+
+    <div class="row gy-4">
+
+      <div class="col-lg-6">
+
+        <img src="{% static 'assets/img/predict.jpg' %}" class="img-fluid" alt="">
+        <!-- <a class="btn btn-info left" href="{% url 'calendar' %}"> Calendar </a> -->
+      </div>
+
+      <div class="col-lg-6">
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        {{ field.label }} <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {{ field.label }} <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post" action="" enctype="multipart/form-data">
+
+          {% csrf_token %}
+
+
+          <div class="row gy-4">
+            <h4>Enter  Details</h4>
+            <div class="row gy-4">
+            <div class="col-md-6">
+              {{ form.title|as_crispy_field }}
+            </div>
+
+            <div class="col-md-6">
+              {{ form.user|as_crispy_field }}
+            </div>
+          </div>
+          <div class="row gy-4">
+          <div class="col-md-6">
+            {{ form.instructor|as_crispy_field }}
+          </div>
+
+          <div class="col-md-6">
+
+          </div>
+        </div>
+        <div class="row gy-4">
+        <div class="col-md-6">
+          {{ form.description|as_crispy_field }}
+        </div>
+      </div>
+        <div class="row gy-4">
+        <div class="col-md-6">
+          {{  form.start_time|as_crispy_field }}
+        </div>
+
+        <div class="col-md-6">
+          {{form.end_time|as_crispy_field }}
+        </div>
+      </div>
+
+
+            <div class="col-md-12 text-center">
+
+            </div>
+
+          </div>
+
+
+          <button  type="submit" class="btn btn-success button" value="save" >  	Submit </button>
+
+
+          <br>
+          <br
+        </form>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section><!-- End Contact Section -->
+{% endblock %}

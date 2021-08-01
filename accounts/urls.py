@@ -1,4 +1,5 @@
 from django.urls import path
+from django.conf.urls import url
 from . import views
 from django.conf.urls.static import static
 from django.conf import settings
@@ -29,6 +30,10 @@ urlpatterns = [
 
     path('addmyworks', views.MyWorksCreateView , name='addmyworks'),
     path('talent', views.talent , name='talent'),
+
+    path('calendar', views.CalendarView.as_view(), name='calendar'),
+    path('event/new', views.event, name='event_new'),
+	path('event/edit/<event_id>/', views.event, name='event_edit'),
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
