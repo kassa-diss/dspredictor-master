@@ -13,27 +13,39 @@ def predict(request):
     else:
         form= PredictForm(request.POST or None)
         #import model file
-        model = joblib.load('DS_Predictor_Model.sav')
+        model = joblib.load('Addisons_Disease_Prediction_Model.sav')
         #validating user entered 18 features inputs
         if form.is_valid():
             age= form.cleaned_data.get("age")
             name= form.cleaned_data.get("name")
-            head_Circumference_Inches = form.cleaned_data.get("head_Circumference_Inches")
-            lines_across_the_palm = form.cleaned_data.get("lines_across_the_palm")
-            protruding_tongue = form.cleaned_data.get("protruding_tongue")
-            height_in_Inches = form.cleaned_data.get("height_in_Inches")
+            muscle_weakness = form.cleaned_data.get("muscle_weakness")
+            Nausea = form.cleaned_data.get("Nausea")
+            vomiting = form.cleaned_data.get("vomiting")
+            Postural_dizziness = form.cleaned_data.get("Postural_dizziness")
+            diarrhea  = form.cleaned_data.get("diarrhea")
+            body_temp_cel  = form.cleaned_data.get("body_temp_cel")
+            cortisol_level = form.cleaned_data.get("cortisol_level")
+            aldosterone_level = form.cleaned_data.get("aldosterone_level")
             sysBP  = form.cleaned_data.get("sysBP")
             diaBP  = form.cleaned_data.get("diaBP")
+            Blood_S_low = form.cleaned_data.get("Blood_S_low")
+            Blood_S_high = form.cleaned_data.get("Blood_S_high")
 
 
             #adding validated user inputs to model
             answer = model.predict([[
-                                    head_Circumference_Inches,
-                                    lines_across_the_palm,
-                                    protruding_tongue,
-                                    height_in_Inches,
-                                    sysBP,
-                                    diaBP,
+                                    muscle_weakness,
+                                    Nausea ,
+                                    vomiting ,
+                                    Postural_dizziness ,
+                                    diarrhea ,
+                                    body_temp_cel  ,
+                                    cortisol_level ,
+                                    aldosterone_level,
+                                    sysBP  ,
+                                    diaBP  ,
+                                    Blood_S_low ,
+                                    Blood_S_high ,
 
 
             ]])
@@ -52,17 +64,23 @@ def predict(request):
             context = {
             'age':age,
             'name':name,
-            'predict_value':predict_value,
-            'head_Circumference_Inches' : head_Circumference_Inches,
-            'lines_across_the_palm' : lines_across_the_palm,
-            'protruding_tongue' : protruding_tongue,
-            'height_in_Inches' : height_in_Inches,
-            'sysBP' : sysBP,
-            'diaBP' : diaBP,
+            'muscle_weakness':muscle_weakness,
+            'Nausea' :Nausea,
+            'vomiting' :vomiting,
+            'Postural_dizziness' :Postural_dizziness,
+            'diarrhea' :diarrhea,
+            'body_temp_cel'  :body_temp_cel,
+            'cortisol_level' :cortisol_level,
+            'aldosterone_level' :aldosterone_level,
+            'sysBP'  :sysBP,
+            'diaBP'  :diaBP,
+            'Blood_S_low' :Blood_S_low,
+            'Blood_S_high': Blood_S_high,
             'risk' : risk,
-
+            'predict_value':predict_value,
             }
-            lgb_predict = model.predict([[11.0,5,0,19.5,70,40]])
+
+            lgb_predict = model.predict([[1,1,1,1,1,38.6,2,6,120,80,70,100]])
 
 
             print(lgb_predict[0])

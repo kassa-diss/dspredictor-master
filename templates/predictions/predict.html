@@ -28,8 +28,8 @@
   <div class="container" data-aos="fade-up">
 
     <header class="section-header">
-      <h2>Welcome to DC Predictor</h2>
-      <p>DS Predictions</p>
+      <h2>Addisons Disease Prediction</h2>
+      <p>Predictions</p>
     </header>
 
     <div class="row gy-4">
@@ -60,22 +60,40 @@
           </div>
           <div class="row gy-4">
           <div class="col-md-6">
-            {{ form.head_Circumference_Inches|as_crispy_field }}
+            {{ form.muscle_weakness|as_crispy_field }}
           </div>
 
           <div class="col-md-6">
-            {{ form.lines_across_the_palm|as_crispy_field }}
+            {{ form.Nausea|as_crispy_field }}
           </div>
         </div>
         <div class="row gy-4">
         <div class="col-md-6">
-          {{  form.protruding_tongue|as_crispy_field }}
+          {{  form.vomiting|as_crispy_field }}
         </div>
 
         <div class="col-md-6">
-          {{form.height_in_Inches|as_crispy_field }}
+          {{form.Postural_dizziness|as_crispy_field }}
         </div>
       </div>
+      <div class="row gy-4">
+      <div class="col-md-6">
+        {{  form.diarrhea|as_crispy_field }}
+      </div>
+
+      <div class="col-md-6">
+        {{form.body_temp_cel|as_crispy_field }}
+      </div>
+    </div>
+    <div class="row gy-4">
+    <div class="col-md-6">
+      {{  form.cortisol_level|as_crispy_field }}
+    </div>
+
+    <div class="col-md-6">
+      {{form.aldosterone_level|as_crispy_field }}
+    </div>
+  </div>
 
         <div class="row gy-4">
           <div class="col-md-6">
@@ -83,6 +101,14 @@
           </div>
           <div class="col-md-6">
             {{ form.diaBP|as_crispy_field }}
+          </div>
+        </div>
+        <div class="row gy-4">
+          <div class="col-md-6">
+            {{ form.Blood_S_low|as_crispy_field }}
+          </div>
+          <div class="col-md-6">
+            {{ form.Blood_S_high|as_crispy_field }}
           </div>
         </div>
 
@@ -93,7 +119,7 @@
           </div>
 
 
-          <button type="submit" class="btn btn-info button" value="save" > <i class="bi bi-code-slash"></i> 	Predict </button>
+          <button  type="submit" class="btn btn-danger button" value="save" > <i class="bi bi-code-slash"></i> 	Predict </button>
 
 
           <br>

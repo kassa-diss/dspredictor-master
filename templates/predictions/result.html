@@ -29,13 +29,13 @@
     <header class="section-header">
       <h2>Results</h2>
       {% if risk == "Low" %}
-      <p style="color:green">Your child is at {{risk}} risk of Down Syndrome </p>
+      <p style="color:green">You are at {{risk}} risk of diagnosing addisons disease </p>
       {% endif %}
       {% if risk == "Intermediate" %}
-      <p style="color:orange">Your child is at {{risk}} risk of Down Syndrome </p>
+      <p style="color:orange">You are at {{risk}} risk of diagnosing addisons disease </p>
       {% endif %}
       {% if risk == "High" %}
-      <p style="color:red">Your child is at {{risk}} risk of Down Syndrome </p>
+      <p style="color:red">You are at {{risk}} risk of diagnosing addisons disease </p>
       {% endif %}
     </header>
 
@@ -63,28 +63,26 @@
             </div>
           </div>
 
-          <div class="col-md-6" data-aos="zoom-out" data-aos-delay="400">
-            <div class="feature-box d-flex align-items-center">
-              <i class="bi bi-check"></i>
-              <h3>Head Circumference: <u>{{head_Circumference_Inches}} inches </u></h3>
-            </div>
-          </div>
-
           <div class="col-md-6" data-aos="zoom-out" data-aos-delay="500">
             <div class="feature-box d-flex align-items-center">
               <i class="bi bi-check"></i>
-              <h3>Lines across the palm: <u>{{lines_across_the_palm}}</u> </h3>
+              {% if muscle_weakness == 0 %}
+              <h3>Muscle Weakness: <u>No </u></h3>
+              {% endif %}
+              {% if muscle_weakness == 1 %}
+              <h3>Muscle weakness: <u>Yes </u></h3>
+              {% endif %}
             </div>
           </div>
 
           <div class="col-md-6" data-aos="zoom-out" data-aos-delay="600">
             <div class="feature-box d-flex align-items-center">
               <i class="bi bi-check"></i>
-              {% if protruding_tongue == 1 %}
-              <h3>Protruding tongue: <u>Yes</u></h3>
+              {% if Nausea == 0 %}
+              <h3>Nausea: <u>No </u></h3>
               {% endif %}
-              {% if protruding_tongue == 0 %}
-              <h3>Protruding tongue: <u>No</u></h3>
+              {% if Nausea == 1 %}
+              <h3>Nausea: <u>Yes </u></h3>
               {% endif %}
             </div>
           </div>
@@ -92,24 +90,83 @@
           <div class="col-md-6" data-aos="zoom-out" data-aos-delay="700">
             <div class="feature-box d-flex align-items-center">
               <i class="bi bi-check"></i>
-              <h3>Height in : <u>{{height_in_Inches}} inches</u></h3>
+              {% if vomiting == 1 %}
+              <h3>Vomiting: <u>Yes</u></h3>
+              {% endif %}
+              {% if vomiting == 0 %}
+              <h3>Vomiting: <u>No</u></h3>
+              {% endif %}
             </div>
           </div>
           <div class="col-md-6" data-aos="zoom-out" data-aos-delay="800">
             <div class="feature-box d-flex align-items-center">
               <i class="bi bi-check"></i>
-              <h3>sysBP : <u>{{sysBP}} mmHg </u></h3>
+              {% if Postural_dizziness == 1 %}
+              <h3>Postural Dizziness: <u>Yes</u></h3>
+              {% endif %}
+              {% if Postural_dizziness == 0 %}
+              <h3>Postural dizziness: <u>No</u></h3>
+              {% endif %}
             </div>
           </div>
           <div class="col-md-6" data-aos="zoom-out" data-aos-delay="900">
             <div class="feature-box d-flex align-items-center">
               <i class="bi bi-check"></i>
-              <h3>diaBP : <u>{{diaBP}} mmHg</u></h3>
+              {% if diarrhea == 1 %}
+              <h3>Diarrhea: <u>Yes</u></h3>
+              {% endif %}
+              {% if diarrhea == 0 %}
+              <h3>Diarrhea: <u>No</u></h3>
+              {% endif %}
+            </div>
+          </div>
+
+
+          <div class="col-md-6" data-aos="zoom-out" data-aos-delay="1000">
+            <div class="feature-box d-flex align-items-center">
+              <i class="bi bi-check"></i>
+              <h3>Body Temperature : <u>{{body_temp_cel}} C</u></h3>
+            </div>
+          </div>
+          <div class="col-md-6" data-aos="zoom-out" data-aos-delay="1100">
+            <div class="feature-box d-flex align-items-center">
+              <i class="bi bi-check"></i>
+              <h3>Blood Cortisol Level : <u>{{cortisol_level}} C</u></h3>
+            </div>
+          </div>
+          <div class="col-md-6" data-aos="zoom-out" data-aos-delay="1200">
+            <div class="feature-box d-flex align-items-center">
+              <i class="bi bi-check"></i>
+              <h3>Blood Aldosterone level : <u>{{aldosterone_level}} C</u></h3>
+            </div>
+          </div>
+          <div class="col-md-6" data-aos="zoom-out" data-aos-delay="1300">
+            <div class="feature-box d-flex align-items-center">
+              <i class="bi bi-check"></i>
+              <h3>sysBP : <u>{{sysBP}} (mmHg) </u></h3>
+            </div>
+          </div>
+          <div class="col-md-6" data-aos="zoom-out" data-aos-delay="1400">
+            <div class="feature-box d-flex align-items-center">
+              <i class="bi bi-check"></i>
+              <h3>diaBP : <u>{{diaBP}} (mmHg)</u></h3>
+            </div>
+          </div>
+          <div class="col-md-6" data-aos="zoom-out" data-aos-delay="1500">
+            <div class="feature-box d-flex align-items-center">
+              <i class="bi bi-check"></i>
+              <h3>Blood Suger Low : <u>{{Blood_S_low}} (mg/dL) </u></h3>
+            </div>
+          </div>
+          <div class="col-md-6" data-aos="zoom-out" data-aos-delay="1600">
+            <div class="feature-box d-flex align-items-center">
+              <i class="bi bi-check"></i>
+              <h3>Blood Sugar High : <u>{{Blood_S_high}} (mg/dL)</u></h3>
             </div>
           </div>
           <header class="section-header">
             <h2>Results</h2>
-            <p>There is a {{predict_value}}% chance of diagnosing down syndrome </p>
+            <p>There is a {{predict_value}}% chance of diagnosing addisons disease </p>
           </header>
           <div class="text-center text-lg-start">
             <a href="{% url 'predict' %}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
