@@ -6,14 +6,15 @@ My Appoinment Calendar
 
 {% block content %}
 <div class="clearfix">
+	<a class="btn btn-success left" href="{% url 'index' %}"> Back to site </a>
 	<a class="btn btn-info left" href="{% url 'calendar' %}?{{ prev_month }}"> Previous Month </a>
 	<a class="btn btn-info right" href="{% url 'calendar' %}?{{ next_month }}"> Next Month </a>
-	<a class="btn btn-info right" href="{% url 'event_new' %}"> New Appoinment </a>
+	<a class="btn btn-warning right" href="{% url 'event_new' %}"> New Appoinment </a>
 </div>
 
 {{ calendar }}
-<div class="clearfix">
-	<a class="btn btn-info left" href="{% url 'index' %}?{{ prev_month }}"> Back to site </a>
+
+
 
 </div>
 {% endblock %}
